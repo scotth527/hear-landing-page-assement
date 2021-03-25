@@ -1,0 +1,12 @@
+.hero {
+    //498.81px
+    height: 498.81px;
+    width: 100%;
+    background-image: url('../assets/images/founders.jpeg');
+    //background-position: center;
+    background-size: cover;
+
+    background-repeat: no-repeat;
+    clip-path: polygon(0 0, 100% 0%, 100% 66%, 0 87%);
+    resize: both;
+}

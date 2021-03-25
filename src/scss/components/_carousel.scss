@@ -1,0 +1,77 @@
+$carousel-background-color: #A9A9A9;
+$carousel-button-color: #FFAE0D;
+$carousel-button-font-color: #FFFFFF;
+$carousel-error-message-color: red;
+
+#carousel {
+    background-color: $carousel-background-color;
+    width:100%;
+    min-height: 513px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    padding: 30px;
+    .carousel-question__heading {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .carousel-next-button__orange {
+        background-color: $carousel-button-color;
+        color: $carousel-button-font-color;
+        padding: 10px 30px;
+        margin:auto;
+        width: 10%;
+        text-align: center;
+    }
+
+    .carousel-choice__button {
+        .carousel-choice__text {
+
+        }
+    }
+
+    .slide {
+        width: 70%;
+        margin:auto;
+        .choice-container {
+            margin: 40px 0px;
+            flex-wrap: wrap;
+            .carousel-choice__button {
+                flex: 1 1 50%;
+                height: 70px;
+                margin-bottom: 15px;
+                //padding-right: 15px;
+                background-color: white;
+
+            }
+        }
+    }
+}
+
+//Need to add specificity
+@media all and (max-width: 400px) {
+    #carousel {
+        .slide {
+
+            .choice-container {
+
+                .carousel-choice__button {
+                    flex: 1 1 100%;
+
+                }
+            }
+        }
+    }
+}
+
+.active-slide {
+    display: block;
+}
+
+.inactive-slide {
+    display: none;
+}
+
+.error_message {
+    color: $carousel-error-message-color;
+}

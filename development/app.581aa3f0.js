@@ -189,13 +189,157 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/app.js":[function(require,module,exports) {
+},{"./../assets/images/founders.jpeg":[["founders.54f52bf7.jpeg","../src/assets/images/founders.jpeg"],"../src/assets/images/founders.jpeg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/assets/data/questions.js":[function(require,module,exports) {
+var questions = [{
+  question: "What has prevented you from getting hearing aids sooner?",
+  answers: ["Not sure if I need them", "I can’t afford them", "I need more information", "I’ve been too busy"]
+}, {
+  question: "How old are your hearing aids?",
+  answers: ["2 years old or less", "3 years old", "4 years old", "5 years old or more"]
+}, {
+  question: "How much does hearing loss restrict you in your daily life?",
+  answers: ["Not at all", "Barely", "Moderately", "Severely"]
+}, {
+  question: "When do you want to improve your hearing?",
+  answers: ["As soon as possible", "Within the next few weeks", "Within the next few months", "I don't know"]
+}, {
+  question: "What is your current employment status?",
+  answers: ["Employed", "Unemployed", "Retired", "Homemaker"]
+}];
+module.exports = {
+  questions: questions
+};
+},{}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 require("./scss/app.scss");
 
-console.log("Hello world!");
-},{"./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var _require = require('./assets/data/questions.js'),
+    questions = _require.questions; // const fs = require('fs');
+// var path = require('path');
+
+
+console.log("Hello world!", questions);
+var CAROUSEL_CONTAINER = document.getElementById('carousel');
+var current_slide_index = 0;
+var answers = [];
+
+var create_slides = function create_slides() {
+  for (var _i = 0; _i < questions.length; _i++) {
+    var slideContainer = document.createElement("div");
+    slideContainer.id = "slide-".concat(_i);
+    slideContainer.className = "slide slide-".concat(_i, " ").concat(_i == 0 ? "active-slide" : "inactive-slide");
+    var question = document.createElement("h1");
+    question.className = "carousel-question__heading";
+    var question_text = document.createTextNode(questions[_i]['question']);
+    question.appendChild(question_text);
+    var choiceContainer = document.createElement("div");
+    choiceContainer.className = "choice-container flex-grid";
+
+    for (var j = 0; j < questions[_i]['answers'].length; j++) {
+      var _answers = questions[_i]['answers'];
+      var choice_button = document.createElement("div");
+      choice_button.className = "carousel-choice__button";
+      var radio_button = document.createElement("input");
+      var choice_label = document.createElement("label");
+      var choice_text = _answers[j];
+      choiceContainer.appendChild(choice_button);
+    }
+
+    slideContainer.appendChild(question);
+    slideContainer.appendChild(choiceContainer);
+  }
+};
+
+create_slides();
+
+var select_choice = function select_choice(e, index) {};
+
+var record_choice = function record_choice(e) {
+  console.log(e.target.value);
+}; //Function that swaps out the active and inactive class, which hides all inactive
+//and displays the current active.
+// index param is an integer to identify the desired active slide
+
+
+var change_slide = function change_slide(index) {
+  var slides = CAROUSEL_CONTAINER.children;
+
+  for (var _i2 = 0; _i2 < slides.length; _i2++) {
+    if (slides[_i2].classList.contains('slide')) {
+      console.log("I", _i2, slides[_i2]);
+
+      if (_i2 == index) {
+        slides[_i2].classList.remove('inactive-slide');
+
+        slides[_i2].classList.add('active-slide');
+      } else {
+        slides[_i2].classList.remove('active-slide');
+
+        slides[_i2].classList.add('inactive-slide');
+      }
+    } else {
+      continue;
+    }
+  }
+};
+
+var increment_carousel_index = function increment_carousel_index() {
+  //Prevent going to next slide if on the last slide
+  if (current_slide_index == questions.length) return;
+  current_slide_index = current_slide_index + 1;
+  change_slide(current_slide_index);
+};
+
+var decrement_carousel_index = function decrement_carousel_index() {
+  //Prevent going back if on first question
+  if (current_slide_index == 0) return;
+  current_slide_index = current_slide_index - 1;
+  change_slide(current_slide_index);
+};
+
+var check_user_has_selected = function check_user_has_selected(index) {
+  if (answers[index]) {
+    return true;
+  } else {
+    render_error_message(index);
+  }
+}; //Finds the selected slide and adds the error message
+
+
+var render_error_message = function render_error_message(index) {
+  var current_slide = document.getElementById("slide-".concat(i));
+};
+
+var clear_error_message = function clear_error_message() {};
+
+var summarize_choices = function summarize_choices() {}; // let read_text = () => {
+// }
+// function loadJSON(callback) {
+//   var xobj = new XMLHttpRequest();
+//   xobj.overrideMimeType("application/json");
+//   xobj.open('GET', './assets/data/questions.json', true);
+//   xobj.onreadystatechange = function () {
+//     if (xobj.readyState == 4 && xobj.status == "200") {
+//       callback(JSON.parse(xobj.responseText));
+//     }
+//   };
+//   xobj.send(null);
+// }
+//
+// loadJSON(function(json) {
+//   console.log("Here is the json", json); // this will log out the json object
+// });
+//let question_path = path.join(__dirname, './', 'assets', 'texts', 'questions.txt');
+// //"../src/assets/texts/questions.txt"
+// var text = fs.readFileSync(question_path);
+// var textByLine = text.split("\n")
+// fetch('questions.txt')
+//     .then(response => response.text())
+//     .then(data => {
+//         console.log("Data", data);
+//     })
+},{"./scss/app.scss":"../src/scss/app.scss","./assets/data/questions.js":"../src/assets/data/questions.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -223,7 +367,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62710" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63865" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

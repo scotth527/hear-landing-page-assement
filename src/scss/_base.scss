@@ -1,0 +1,22 @@
+$font-style: "Open Sans";
+
+body {
+    margin:0;
+}
+
+h1, p, span {
+    font-family: $font-style;
+}
+
+.container {
+    width:70%;
+    margin:auto;
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.text-center {
+    text-align: center;
+}

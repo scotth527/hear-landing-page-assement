@@ -1,0 +1,51 @@
+$nav-color: #F2F2F3;
+
+nav.header {
+    background-color: $nav-color;
+    width: 100%;
+    min-height: 72px;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    padding: 16px 0px;
+    .news-logos {
+        margin-left: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    ul > li {
+        list-style-type: none;
+        margin-left: 10px;
+        height:40px;
+        flex: 1;
+        img {
+            object-fit: contain;
+            height:100%;
+        }
+    }
+    .container {
+        margin: auto;
+        align-items: center;
+    }
+}
+
+.main-body.container {
+    margin-top: 56px;
+    //position: relative;
+}
+
+@media all and (max-width: 400px) {
+    nav.header {
+        .container {
+            //Each item will be on it's own row
+            flex-wrap: wrap;
+            flex: 1 1 100%;
+            justify-content: center;
+        }
+
+    }
+
+    .container {
+        width: 100%;
+    }
+}
