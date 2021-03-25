@@ -2,6 +2,8 @@ $carousel-background-color: #A9A9A9;
 $carousel-button-color: #FFAE0D;
 $carousel-button-font-color: #FFFFFF;
 $carousel-error-message-color: red;
+$carousel-choice-background-color: #FFFFFF;
+$carousel-choice-border-color: #A9A9A9;
 
 #carousel {
     background-color: $carousel-background-color;
@@ -22,6 +24,7 @@ $carousel-error-message-color: red;
         margin:auto;
         width: 10%;
         text-align: center;
+        cursor: pointer;
     }
 
     .carousel-choice__button {
@@ -31,21 +34,45 @@ $carousel-error-message-color: red;
     }
 
     .slide {
-        width: 70%;
+        width: 75%;
         margin:auto;
         .choice-container {
             margin: 40px 0px;
             flex-wrap: wrap;
+            flex: 1;
             .carousel-choice__button {
-                flex: 1 1 50%;
-                height: 70px;
+                flex: 0 0 auto;
+                width: 48%;
+                height: 77px;
                 margin-bottom: 15px;
                 //padding-right: 15px;
-                background-color: white;
-
+                border: 1px solid #A9A9A9;
+                background-color: $carousel-choice-background-color;
+                font-size: 20px;
+                line-height: 24px;
+                font-style: normal;
+                font-weight: 700;
+                label {
+                    margin-left: 18px;
+                }
             }
         }
     }
+}
+
+//Flips the direction of the right arrow image to make a left button
+.carousel-left_button {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  margin-right: 45px;
+}
+
+.carousel-right_button {
+    padding-left: 45px;
+}
+
+.carousel-choice__button, .carousel-right_button, .carousel-left_button {
+    cursor: pointer;
 }
 
 //Need to add specificity
@@ -54,10 +81,10 @@ $carousel-error-message-color: red;
         .slide {
 
             .choice-container {
-
+                width: 100%;
                 .carousel-choice__button {
                     flex: 1 1 100%;
-
+                    width: 100%;
                 }
             }
         }
