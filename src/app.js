@@ -1,3 +1,5 @@
+import arrow_image from './assets/images/right_arrow.png';
+import fs from 'fs';
 
 let { questions } = require('./assets/data/questions.js');
 // const fs = require('fs');
@@ -14,7 +16,7 @@ let create_carousel_nav_buttons = (index)=> {
   let left_button = document.createElement("div");
   left_button.className = `carousel-left_button align-center flex-grid ${index == 0 && 'inactive_button'}` ;
   let left_button_icon = document.createElement("img");
-  left_button_icon.src =`${window.location}:3000/right_arrow.png`;
+  left_button_icon.src = arrow_image;
   left_button_icon.alt = "previous";
   left_button_icon.className = "align-self";
 
@@ -28,7 +30,7 @@ let create_carousel_nav_buttons = (index)=> {
   right_button.className = `carousel-right_button flex-grid ${index == questions.length && 'inactive_button'}`;
   right_button.id = "right-button";
   let right_button_icon = document.createElement("img");
-  right_button_icon.src = "./assets/images/right_arrow.png"
+  right_button_icon.src = arrow_image
   right_button_icon.alt = "next";
   right_button_icon.className = "align-self";
 
@@ -140,7 +142,6 @@ let create_slides = ()=> {
     }
     return CAROUSEL_CONTAINER;
 }
-
 
 
 //Creates the orange next button in the carousel, returns the dom element
