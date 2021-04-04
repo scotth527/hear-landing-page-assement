@@ -4,18 +4,19 @@ $paragraph-font-size: 1.313rem;
 
 .info {
     p {
-        font-family: $headline-font-style;
-        font-size: $paragraph-font-size;
         color: $paragraph-font-color;
-        line-height: 36px;
-        font-style: normal;
         font-weight: normal;
         margin-bottom: 48px;
     }
     span {
         color: $span-font-color;
         font-weight: bold;
-        font-size: $paragraph-font-size;
+    }
+
+    p, span {
         line-height: 36px;
+        font-size: $paragraph-font-size;
+        font-style: normal;
+        font-family: $headline-font-style;
     }
 }
