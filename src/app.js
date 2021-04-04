@@ -1,7 +1,12 @@
 import arrow_image from './assets/images/right_arrow.png';
-import fs from 'fs';
+// import fs from 'fs';
+// import data from './assets/texts/questions.txt';
 
 let { questions } = require('./assets/data/questions.js');
+
+// const survey = fs.readFileSync(data,'utf8');
+//
+// console.log("Here is the data", survey);
 // const fs = require('fs');
 // var path = require('path');
 const ERROR_MESSAGE = "Please select a choice."
@@ -45,8 +50,7 @@ let create_carousel_nav_buttons = (index)=> {
 //Finds the selected slide and adds the error message
 let render_error_message = (index)=> {
     let current_slide_error_message = document.getElementById(`error-message-slide-${index}`);
-    let error_text = document.createTextNode(ERROR_MESSAGE);
-    current_slide_error_message.appendChild(error_text);
+    current_slide_error_message.innerHTML = ERROR_MESSAGE;
 }
 
 //Removes text from error message p tag
@@ -143,7 +147,6 @@ let create_slides = ()=> {
     return CAROUSEL_CONTAINER;
 }
 
-
 //Creates the orange next button in the carousel, returns the dom element
 let create_next_button = ()=> {
     let next_button = document.createElement("div");
@@ -160,12 +163,10 @@ let select_choice = (choice, index, fill_radio_callback)=>{
     clear_error_message(index);
     record_choice(choice,index)
     fill_radio_callback()
-
 }
 
 //Adds response to the answer array
 let record_choice = (choice,index)=> {
-    // console.log(e.target.value);
     answers[index] = choice
 }
 
