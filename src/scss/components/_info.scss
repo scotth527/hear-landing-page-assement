@@ -1,6 +1,6 @@
 $span-font-color: #295EA5;
 $paragraph-font-color: #000000;
-$paragraph-font-size: 21px;
+$paragraph-font-size: 1.313rem;
 
 .info {
     p {
@@ -15,7 +15,7 @@ $paragraph-font-size: 21px;
     span {
         color: $span-font-color;
         font-weight: bold;
-        font-size: 21px;
+        font-size: $paragraph-font-size;
         line-height: 36px;
     }
 }
