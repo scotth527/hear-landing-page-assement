@@ -255,8 +255,7 @@ let summarize_choices = ()=> {
     let list = document.createElement("ol");
     for(let i = 0; i < answers.length; i++) {
         let answer = document.createElement("li");
-        let answer_text = document.createTextNode(` ${answers[i]}`)
-        answer.appendChild(answer_text);
+        answer.innerHTML = ` ${answers[i]}`
         list.appendChild(answer);
     }
     return list;
@@ -266,12 +265,24 @@ let slides = create_slides();
 CAROUSEL_CONTAINER.parentNode.replaceChild(slides, CAROUSEL_CONTAINER);
 CAROUSEL_CONTAINER.appendChild(create_next_button());
 
+let getParameterByName = (name, url = window.location.href) => {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 document.body.onload = ()=> {
-    // let url_string = window.location.href;
-    // console.log(url_string);
-    // let url = new ULR(url_string);
-    // let question_number = url.searchParam.get("skip")
-    // console.log("question_number")
+    //Handles skipping to a particular question if there is a param url
+    let skip_value = parseInt(getParameterByName('skip'));
+    let is_valid_question = skip_value > 0 && skip_value <= questions.length;
+    if(skip_value && is_valid_question) {
+        change_slide(skip_value - 1);
+        location.href = "#";
+        location.href = "#carousel";
+    }
 }
 
 
