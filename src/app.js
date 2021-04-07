@@ -94,7 +94,7 @@ let create_slides = ()=> {
                 let answer_choices = questions[i]['answers'];
 
                 let choice_button = document.createElement("div");
-                choice_button.className = "carousel-choice__button flex-grid align-items justify-content-center";
+                choice_button.className = "carousel-choice__button flex-grid align-items ";
                 let choice_text = answer_choices[j];
                 let radio_button = document.createElement("input");
                 //Set radio attributes
